@@ -1,0 +1,36 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg" style="background-color: #e77e2e;">
+    <a class="navbar-brand" href="/">
+        <img src="{% static 'images/logo_onlyflans2.png' %}" width="150" height="70" class="d-inline-block align-top" alt="Logo OnlyFlans" style="margin: 10px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/" style="margin-right: 10px;">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/bienvenido" style="margin-right: 10px;">Bienvenido</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/acerca" style="margin-right: 10px;">Acerca</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contacto" style="margin-right: 10px;">Contacto</a>
+            </li>
+            <li class="nav-item">
+                {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'welcome' %}" style="margin-right: 10px;">Bienvenido {{ user.get_username }}</a>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link" style="background: none; border: none; color: white; margin-right: 10px; cursor: pointer;">Cerrar sesión</button>
+                    </form>
+                {% else %}
+                    <a class="nav-link" href="{% url 'login' %}" style="margin-right: 10px;">Iniciar sesión</a>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</nav>

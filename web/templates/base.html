@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a onlyflans</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/flan.png' %}">
+
+    <style>
+        body{
+            font-family: 'Dancing Script', cursive;
+            color: #ff9966; 
+            background-color: rgb(254, 238, 170); 
+            }
+        body h1 {
+            padding-bottom: 20px;
+            }
+
+        .navbar .nav-link {
+            color: white !important;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        {% include 'header.html' %}
+    </div>
+
+    <div class="container">
+        {% include 'navbar.html' %}
+    </div>
+
+    <div class="container">
+        <main class="py-4">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <div class="container">
+        {% include 'footer.html' %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.11/dist/umd/popper.min.js"></script>
+</body>
+</html>
