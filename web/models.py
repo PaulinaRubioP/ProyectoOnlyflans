@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.utils.text import slugify
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Flan(models.Model):
     flan_uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
@@ -9,6 +10,16 @@ class Flan(models.Model):
     image_url = models.URLField()
     slug = models.SlugField(unique=True, blank=True)
     is_private = models.BooleanField(default=False)
+    
+    # Nuevo campo de calificación
+    rating = models.DecimalField(
+        max_digits=2, 
+        decimal_places=1, 
+        validators=[MinValueValidator(1.0), MaxValueValidator(5.0)],
+        null=True, 
+        blank=True,
+        help_text="Calificación promedio de los usuarios, de 1 a 5"
+    )
 
     def save(self, *args, **kwargs):
         if not self.slug:

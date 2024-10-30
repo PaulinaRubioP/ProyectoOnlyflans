@@ -25,13 +25,20 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ flan.name }}</h5>
                         <p class="card-text">{{ flan.description }}</p>
+                        
+                        {% if flan.rating %}
+                            <p class="card-text">Calificación: {{ flan.rating }} estrellas</p>
+                        {% else %}
+                            <p class="card-text">Sin calificación</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
-    {% endblock %}
+
+      {% endblock %}
 
     <!-- Enlace a jQuery y Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

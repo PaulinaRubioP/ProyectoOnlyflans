@@ -1,11 +1,9 @@
 from django.contrib import admin
-from .models import Flan
-from .models import Contact
-
+from .models import Flan, Contact
 
 @admin.register(Flan)
 class FlanAdmin(admin.ModelAdmin):
-    list_display = ('name', 'is_private', 'flan_uuid')
+    list_display = ('name', 'is_private', 'rating', 'flan_uuid')  # Agregamos 'rating' a list_display
     prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(Contact)
